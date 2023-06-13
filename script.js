@@ -2,12 +2,12 @@ function threeSum(arr, target) {
 // write your code here
 	arr.sort();
 	let n = arr.length;
-	let i = 0 ; j = n-1;
+	let i = 0 ;
 	let max = Number.MAX_VALUE;
 	let ans = 0
 	while (i<j) {
 		let k = i+1;
-		
+		let j = n-1;
 		while(k<j){
 			let sum = arr[i] + arr[k] + arr[j];
 			if(sum < target){
