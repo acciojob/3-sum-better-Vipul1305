@@ -1,31 +1,31 @@
 function threeSum(arr, target) {
 // write your code here
 	arr.sort();
-	let n = arr.length;
-	let i = 0 ;
-	let max = Number.MAX_VALUE;
-	let ans = 0
-	while (i<j) {
-		let k = i+1;
-		let j = n-1;
-		while(k<j){
-			let sum = arr[i] + arr[k] + arr[j];
-			if(sum < target){
-				k++;
-			}else if(sum > target){
-				j--;
-			}else{
-				return sum;
-			}
-			let diff = math.abs(sum - target);
-			if (diff<max){
-				max = diff;
-				ans = sum;
-			}
-		}
-		i++;
-	}
-	return ans;
+        let n = arr.length;
+        let closest = 0;
+        let minDiff = Number.MAX_VALUE;
+        //set the three pointer
+        for (let i = 0; i<n-2; i++){
+            let low = i+1;
+            let high = n-1;
+            while(low < high){
+                let sum = arr[i] + arr[low] + arr[high];
+                if (sum == target){
+                    return sum;
+                }else if (sum < target){
+                    low++;
+                }else {// sum > target
+                    high--;
+                }
+                let diff = Math.abs(sum - target);//to find closest value
+                if (diff < minDiff){
+                    minDiff = diff;
+                    closest = sum;
+                }
+            }
+        }
+        return closest;
+  
 }
 
 module.exports = threeSum;
